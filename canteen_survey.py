@@ -4,6 +4,18 @@ from datetime import datetime
 import os
 from streamlit_cookies_manager import EncryptedCookieManager
 
+# 在app.py最顶部加上
+import streamlit as st
+
+# 缓存问卷数据、投票统计，不用每次打开重新加载
+@st.cache_data
+def load_survey_data():
+    # 这里放你读取CSV、统计票数的代码
+    return your_data
+
+# 页面整体宽度、渲染优化
+st.set_page_config(page_title="食堂问卷", layout="centered")
+
 # Cookie 一人一票限制
 cookies = EncryptedCookieManager(
     password="canteen20260425abc",
